@@ -37,5 +37,17 @@ pipeline {
         failure {
             echo 'Build Failed!'
         }
+
+        stage('Docker Build'){
+            steps{
+                bat 'docker build -t java-cicd-demo:v1 .'
+            }
+        }
+        stage('Deploy'){
+            step{
+                bat 'docker rm -f java-app || exit 0'
+                bat 'docker run -d -p 8082:8081 --name java-app java-cicd-demo:v1'
+            }
+        }
     }
 }
