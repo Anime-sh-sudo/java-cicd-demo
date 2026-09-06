@@ -21,7 +21,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                  withSonarQubeEnv('SonarQube') {
-                 bat 'mvn sonar:sonar -Dsonar.projectKey=java-cicd-demo'
+                 bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-cicd-demo'
                 }
              }
         }
