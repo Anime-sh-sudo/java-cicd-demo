@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String home() {
-        return "Hello from DevOps CI/CD Project!";
+        return "Hello from DevOps CI/CD Project now code has also been check with sonarqube!";
     }
 }
