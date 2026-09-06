@@ -20,8 +20,9 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-                
-                 bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-cicd-demo'
+                withSonarQubeEnv('SonarQube') {
+                 bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-cicd-demo -Dsonar.host.url=http://localhost:9000'
+                }
              }
         }
         stage('Quality Gate') {
